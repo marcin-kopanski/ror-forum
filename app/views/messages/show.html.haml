@@ -21,8 +21,9 @@
 
   = render @message.comments
 
-  %h3.pl-3 Join Discussion:
+  - if user_signed_in?
+    %h3.pl-3 Join Discussion:
 
-  .card
-    .card-body
-      = render "comments/form"
+    .card
+      .card-body
+        = render "comments/form"
