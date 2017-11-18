@@ -9,4 +9,9 @@
     .card-body
       %p.card-text= @message.description
       %ul.nav.flex-column
-      = link_to "Back", root_path, class: "btn btn-info"
+      .row
+        .col-12.d-flex
+          .btn-group.ml-auto
+            = link_to "Back", root_path, class: "btn btn-light"
+            = link_to "Fix", edit_message_path(@message), class: "btn btn-info"
+            = link_to "Delete", @message, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

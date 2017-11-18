@@ -27,9 +27,16 @@ class MessagesController < ApplicationController
   end
 
   def update
+    if @message.update(message_params)
+      redirect_to @message, notice: "Message successfully edited!"
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @message.destroy
+    redirect_to :index
   end
 
   private
