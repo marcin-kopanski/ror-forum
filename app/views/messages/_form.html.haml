@@ -1,4 +1,5 @@
 = simple_form_for @message do |f|
   = f.input :title, label: "Message title"
   = f.input :description
+  = link_to "Back", @message, class: "btn btn-light"
   = f.button :submit

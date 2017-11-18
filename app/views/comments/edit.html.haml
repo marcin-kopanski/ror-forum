@@ -1,0 +1,9 @@
+.col-md-8.mx-auto
+  .card
+    .card-body
+      %h3.card-title Fix Comment
+      
+      = simple_form_for ([@message, @comment]) do |f|
+        = f.input :content, label: "Comment"
+        = link_to "Back", @message, class: "btn btn-light"
+        = f.button :submit
