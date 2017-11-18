@@ -1,16 +1,26 @@
 class MessagesController < ApplicationController
   before_action :find_message, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
+    @messages = Message.all.order("created_at DESC")
   end
 
   def show
   end
 
   def new
+    @message = Message.new
   end
 
   def create
+    @message = Message.new(message_params)
+
+    if @message.save
+      redirect_to root_path, notice: "Message successfully created!"
+    else
+      render :new
+    end
   end
 
   def edit

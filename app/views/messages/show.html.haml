@@ -1,1 +1,12 @@
-%h1 Message#show
+.col-md-10.mx-auto
+  .card
+    .card-header
+      %h3.card-title= @message.title
+      .text-muted
+        = time_ago_in_words(@message.created_at)
+        ago
+
+    .card-body
+      %p.card-text= @message.description
+      %ul.nav.flex-column
+      = link_to "Back", root_path, class: "btn btn-info"
