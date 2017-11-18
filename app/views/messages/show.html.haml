@@ -1,10 +1,7 @@
 .col-md-10.mx-auto
-  .card
+  .card.mb-3
     .card-header
       %h3.card-title= @message.title
-      .text-muted
-        = time_ago_in_words(@message.created_at)
-        ago
 
     .card-body
       %p.card-text= @message.description
@@ -15,3 +12,15 @@
             = link_to "Back", root_path, class: "btn btn-light"
             = link_to "Fix", edit_message_path(@message), class: "btn btn-info"
             = link_to "Delete", @message, method: :destroy, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+
+    .card-footer.text-muted
+      = time_ago_in_words(@message.created_at)
+      ago
+
+  %h3.pl-3 Comments:
+
+  = render @message.comments
+
+  .card
+    .card-body
+      = render "comments/form"

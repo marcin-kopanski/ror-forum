@@ -1,0 +1,10 @@
+.card.mb-3
+  .card-body
+    %p.card-text= comment.content
+
+  .card-footer.text-muted
+    By
+    = comment.user.email
+    | Posted
+    = time_ago_in_words(comment.created_at)
+    ago
